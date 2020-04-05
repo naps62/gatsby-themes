@@ -20,6 +20,7 @@ type PostProps = {
       body: string
       excerpt: string
       timeToRead: number
+      canonical?: string
       banner?: {
         childImageSharp: {
           resize: {
@@ -41,6 +42,7 @@ const Post = ({ data: { post } }: PostProps) => (
       description={post.description ? post.description : post.excerpt}
       image={post.banner ? post.banner.childImageSharp.resize.src : undefined}
       pathname={post.slug}
+      canonical={post.canonical}
     />
     <Styled.h2>{post.title}</Styled.h2>
     <p sx={{ color: `secondary`, mt: 3, a: { color: `secondary` }, fontSize: [1, 1, 2] }}>

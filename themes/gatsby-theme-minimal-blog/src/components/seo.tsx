@@ -7,6 +7,7 @@ const defaultProps = {
   description: false,
   pathname: false,
   image: false,
+  canonical: null,
   children: null,
 }
 
@@ -15,10 +16,11 @@ type Props = {
   description?: string
   pathname?: string
   image?: string
+  canonical?: string
   children?: React.ReactNode
 }
 
-const SEO = ({ title, description, pathname, image, children }: Props) => {
+const SEO = ({ title, description, pathname, image, canonical, children }: Props) => {
   const site = useSiteMetadata()
 
   const {
@@ -59,6 +61,7 @@ const SEO = ({ title, description, pathname, image, children }: Props) => {
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      {!!canonical && <link ref="canonical" href={canonical} />}
       {children}
     </Helmet>
   )
